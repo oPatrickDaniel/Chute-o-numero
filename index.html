@@ -13,10 +13,10 @@
     <div class="container">
         <h1>Acerte o número</h1>
         <p>tente acertar um número secreto entre 0 e 10</p>
-        <div class="inputs">
+        <form class="inputs" id="form">
             <input onchange="result()" type="number" placeholder="Digite um número" id="input-number"><input
                 onclick="result()" class="input-button" type="button" value="Enviar">
-        </div>
+        </form>
         <div class="results">
             <h3 class="hidden" id="attempt">a</h3>
             <h3 class="hidden" id="result">a</h3>
