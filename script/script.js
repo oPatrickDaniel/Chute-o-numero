@@ -45,6 +45,7 @@ function result() {
         attempt.innerText = "tentativas: " + attemptNumber
         result.innerText = "Resposta errada: o número é maior"
         attemptNumber++
+        play.reset()
 
     } else if (n < numberPlayer()) {
         attempt.classList.remove("hidden")
@@ -53,11 +54,13 @@ function result() {
         attempt.innerText = "tentativas: " + attemptNumber
         result.innerText = "Resposta errada: o número é menor"
         attemptNumber++
+        play.reset()
 
     } else {
         result.classList.add("wrong")
         result.classList.remove("hidden")
         result.innerText = "INSIRA UM VALOR VALIDO"
+        play.reset()
     }
 }
 
