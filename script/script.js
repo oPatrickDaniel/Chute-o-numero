@@ -34,13 +34,13 @@ function result() {
         attempt.classList.remove("hidden")
         result.classList.remove("hidden")
         play.classList.remove("hidden")
-        result.classList.add("correct")
+        result.classList.add("rightAnswer")
         attempt.innerText = "tentativas: " + attemptNumber
         result.innerText = "Parabéns você acertou"
 
     } else if (n > numberPlayer()) {
         attempt.classList.remove("hidden")
-        result.classList.add("wrong")
+        result.classList.add("wrongAnswer")
         result.classList.remove("hidden")
         attempt.innerText = "tentativas: " + attemptNumber
         result.innerText = "Resposta errada: o número é maior"
@@ -49,7 +49,7 @@ function result() {
 
     } else if (n < numberPlayer()) {
         attempt.classList.remove("hidden")
-        result.classList.add("wrong")
+        result.classList.add("wrongAnswer")
         result.classList.remove("hidden")
         attempt.innerText = "tentativas: " + attemptNumber
         result.innerText = "Resposta errada: o número é menor"
@@ -57,7 +57,7 @@ function result() {
         play.reset()
 
     } else {
-        result.classList.add("wrong")
+        result.classList.add("wrongAnswer")
         result.classList.remove("hidden")
         result.innerText = "INSIRA UM VALOR VALIDO"
         play.reset()

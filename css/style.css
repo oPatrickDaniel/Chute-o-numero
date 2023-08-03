@@ -1,31 +1,42 @@
+/* formatação css */
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
+/* Modificadores*/
+
+/* .hidden {
+    display: none;
+} */
+
+/* body */
+
 body {
-    width: 100vw;
     height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: gray;
 }
+
+/* main */
 
 .container {
     background-color: #5a7465;
     color: white;
+    width: 550px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 14px;
     border-radius: 1rem;
-    padding: 50px;
+    padding: 3em;
 }
 
-#input-number {
+.inputNum {
     background-color: transparent;
     color: white;
     border: 2px solid white;
@@ -41,7 +52,7 @@ input::placeholder {
     text-align: center;
 }
 
-.input-button {
+.sendButton {
     background-color: white;
     color: #5a7465;
     border: 2px solid white;
@@ -51,13 +62,9 @@ input::placeholder {
     cursor: pointer;
 }
 
-#input-button:hover {
+.sendButton:hover {
     opacity: 0.7;
-    transition: 250ms;
-}
-
-.hidden {
-    display: none;
+    transition: 100ms;
 }
 
 .playAgain {
@@ -76,13 +83,10 @@ h3 {
     font-size: 24px;
 }
 
-.wrong {
-    color: #e23333;
-    /* text-shadow: white 0.1em 0.1em 0.2em; */
+.wrongAnswer {
+    color: #a71919;
 }
 
-.correct {
+.rightAnswer {
     color: #36c63d;
-    /* text-shadow: black 0.1em 0.1em 0.2em, */
-
 }

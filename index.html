@@ -13,17 +13,19 @@
     <div class="container">
         <h1>Acerte o número</h1>
         <p>tente acertar um número secreto entre 0 e 10</p>
-        <form class="inputs" id="form">
-            <input onchange="result()" type="number" placeholder="Digite um número" id="input-number"><input
-                onclick="result()" class="input-button" type="button" value="Enviar">
-        </form>
+        <div>
+            <input id="input-number" class="inputNum" onchange="result()" type="number"
+                placeholder="Digite um número"><input class="sendButton" onclick="result()" type="button"
+                value="Enviar">
+        </div>
         <div class="results">
-            <h3 class="hidden" id="attempt">a</h3>
-            <h3 class="hidden" id="result">a</h3>
+            <h3 class="hidden" id="attempt">tentativas:</h3>
+            <h3 class="hidden wrongAnswer" id="result">Resposta errada: o número é menor</h3>
         </div>
         <input onclick="playAgain()" type="button" value="Jogar Novamente" class="playAgain hidden" id="play">
-
-        <script src="./script/script.js"></script>
+    </div>
 </body>
+
+<script src="./script/script.js"></script>
 
 </html>
