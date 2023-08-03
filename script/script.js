@@ -1,69 +1,61 @@
+// elementos html
+let inputNumber = document.getElementById("inputNum")
+let sendButton = document.getElementById("sendButton")
+let trialElement = document.getElementById("attempt")
+let resultElement = document.getElementById("result")
+let playAgainElement = document.getElementById("playAgain")
 
-function aleatoricNumber() {
-    // cria um numero aleatório
-
-    let aleatoricNumber = Math.round(Math.random() * 10)
-    return aleatoricNumber
-}
-let n = aleatoricNumber()
+// variáveis iniciais
+let randomNumber = Math.round(Math.random() * 10)
+let attemptNumber = 0;
 
 function numberPlayer() {
-    // armazena o numero do cliente
+    // verifica se o numero do usuário é valido e o  armazena;
+    let InputValue = parseFloat(inputNumber.value)
 
-    let player = document.getElementById("input-number")
-    number = parseFloat(player.value)
-
-    // verifica se o o numero do cliente é um numero valido
-
-    if (number <= 10 && number >= 0 && Number.isInteger(number) == true) {
-        return number
+    if (InputValue >= 0 && InputValue <= 10 && Number.isInteger(InputValue) == true) {
+        return InputValue
     }
 }
 
-let attemptNumber = 1;
-function result() {
+function printResultInHtml() {
     // retorna o resultado da tentativa para o cliente
 
-    let attempt = document.getElementById("attempt")
-    let result = document.getElementById("result")
-    let play = document.getElementById("play")
+    resultElement.classList.remove("right-answer")
+    resultElement.classList.remove("wrong-answer")
 
-    if (n == numberPlayer()) {
+    if (randomNumber === numberPlayer()) {
+        resultElement.classList.add("right-answer")
+        trialElement.innerText = "tentativas: " + attemptNumber
+        resultElement.innerText = "Parabéns você acertou"
+        playAgainElement.classList.remove("d-none")
 
+    } else if (randomNumber > numberPlayer()) {
+        resultElement.classList.add("wrong-answer")
+        trialElement.innerText = "tentativas: " + attemptNumber
+        resultElement.innerText = "Resposta errada: o número é MAIOR"
 
-        attempt.classList.remove("hidden")
-        result.classList.remove("hidden")
-        play.classList.remove("hidden")
-        result.classList.add("rightAnswer")
-        attempt.innerText = "tentativas: " + attemptNumber
-        result.innerText = "Parabéns você acertou"
-
-    } else if (n > numberPlayer()) {
-        attempt.classList.remove("hidden")
-        result.classList.add("wrongAnswer")
-        result.classList.remove("hidden")
-        attempt.innerText = "tentativas: " + attemptNumber
-        result.innerText = "Resposta errada: o número é maior"
-        attemptNumber++
-        play.reset()
-
-    } else if (n < numberPlayer()) {
-        attempt.classList.remove("hidden")
-        result.classList.add("wrongAnswer")
-        result.classList.remove("hidden")
-        attempt.innerText = "tentativas: " + attemptNumber
-        result.innerText = "Resposta errada: o número é menor"
-        attemptNumber++
-        play.reset()
+    } else if (randomNumber < numberPlayer()) {
+        resultElement.classList.add("wrong-answer")
+        trialElement.innerText = "tentativas: " + attemptNumber
+        resultElement.innerText = "Resposta errada: o número é MENOR"
 
     } else {
-        result.classList.add("wrongAnswer")
-        result.classList.remove("hidden")
-        result.innerText = "INSIRA UM VALOR VALIDO"
-        play.reset()
+        resultElement.classList.add("wrong-answer")
+        resultElement.innerText = "INSIRA UM VALOR VALIDO"
     }
 }
 
-function playAgain() {
+inputNumber.addEventListener('change', () => {
+    attemptNumber++
+    printResultInHtml()
+})
+
+sendButton.addEventListener('click', () => {
+    attemptNumber++
+    printResultInHtml()
+})
+
+playAgainElement.addEventListener('click', () => {
     location.reload(true)
-}
+})

@@ -14,15 +14,14 @@
         <h1>Acerte o número</h1>
         <p>tente acertar um número secreto entre 0 e 10</p>
         <div>
-            <input id="input-number" class="inputNum" onchange="result()" type="number"
-                placeholder="Digite um número"><input class="sendButton" onclick="result()" type="button"
-                value="Enviar">
+            <input id="inputNum" class="input-num" type="number" placeholder="Digite um número"><input id="sendButton"
+                class="send-btn" type="button" value="Enviar">
         </div>
-        <div class="results">
-            <h3 class="hidden" id="attempt">tentativas:</h3>
-            <h3 class="hidden wrongAnswer" id="result">Resposta errada: o número é menor</h3>
+        <div class="resultArea">
+            <h3 id="attempt">Tentativas: 0</h3>
+            <h3 id="result">Insira um valor</h3>
         </div>
-        <input onclick="playAgain()" type="button" value="Jogar Novamente" class="playAgain hidden" id="play">
+        <input id="playAgain" class="play-again d-none" type="button" value="Jogar Novamente">
     </div>
 </body>
 
