@@ -1,61 +1,60 @@
+"use strict";
 // elementos html
-let inputNumber = document.getElementById("inputNum")
-let sendButton = document.getElementById("sendButton")
-let trialElement = document.getElementById("attempt")
-let resultElement = document.getElementById("result")
-let playAgainElement = document.getElementById("playAgain")
-
+let inputNumber = document.querySelector("#inputNum");
+let sendButton = document.querySelector("#sendButton");
+let trialElement = document.querySelector("#attempt");
+let resultElement = document.querySelector("#result");
+let playAgainElement = document.querySelector("#playAgain");
 // variáveis iniciais
-let randomNumber = Math.round(Math.random() * 10)
+let randomNumber = Math.round(Math.random() * 10);
 let attemptNumber = 0;
-
 function numberPlayer() {
     // verifica se o numero do usuário é valido e o  armazena;
-    let InputValue = parseFloat(inputNumber.value)
-
+    if (!inputNumber)
+        return 0;
+    let InputValue = parseFloat(inputNumber.value);
     if (InputValue >= 0 && InputValue <= 10 && Number.isInteger(InputValue) == true) {
-        return InputValue
+        return InputValue;
     }
+    return 0;
 }
-
 function printResultInHtml() {
     // retorna o resultado da tentativa para o cliente
-
-    resultElement.classList.remove("right-answer")
-    resultElement.classList.remove("wrong-answer")
-
+    if (!resultElement || !trialElement || !playAgainElement)
+        return;
+    resultElement.classList.remove("right-answer");
+    resultElement.classList.remove("wrong-answer");
     if (randomNumber === numberPlayer()) {
-        resultElement.classList.add("right-answer")
-        trialElement.innerText = "tentativas: " + attemptNumber
-        resultElement.innerText = "Parabéns você acertou"
-        playAgainElement.classList.remove("d-none")
-
-    } else if (randomNumber > numberPlayer()) {
-        resultElement.classList.add("wrong-answer")
-        trialElement.innerText = "tentativas: " + attemptNumber
-        resultElement.innerText = "Resposta errada: o número é MAIOR"
-
-    } else if (randomNumber < numberPlayer()) {
-        resultElement.classList.add("wrong-answer")
-        trialElement.innerText = "tentativas: " + attemptNumber
-        resultElement.innerText = "Resposta errada: o número é MENOR"
-
-    } else {
-        resultElement.classList.add("wrong-answer")
-        resultElement.innerText = "INSIRA UM VALOR VALIDO"
+        resultElement.classList.add("right-answer");
+        trialElement.innerText = "tentativas: " + attemptNumber;
+        resultElement.innerText = "Parabéns você acertou";
+        playAgainElement.classList.remove("d-none");
+    }
+    else if (randomNumber > numberPlayer()) {
+        resultElement.classList.add("wrong-answer");
+        trialElement.innerText = "tentativas: " + attemptNumber;
+        resultElement.innerText = "Resposta errada: o número é MAIOR";
+    }
+    else if (randomNumber < numberPlayer()) {
+        resultElement.classList.add("wrong-answer");
+        trialElement.innerText = "tentativas: " + attemptNumber;
+        resultElement.innerText = "Resposta errada: o número é MENOR";
+    }
+    else {
+        resultElement.classList.add("wrong-answer");
+        resultElement.innerText = "INSIRA UM VALOR VALIDO";
     }
 }
-
-inputNumber.addEventListener('change', () => {
-    attemptNumber++
-    printResultInHtml()
-})
-
-sendButton.addEventListener('click', () => {
-    attemptNumber++
-    printResultInHtml()
-})
-
-playAgainElement.addEventListener('click', () => {
-    location.reload(true)
-})
+if (inputNumber && sendButton && playAgainElement) {
+    inputNumber.addEventListener('change', () => {
+        attemptNumber++;
+        printResultInHtml();
+    });
+    sendButton.addEventListener('click', () => {
+        attemptNumber++;
+        printResultInHtml();
+    });
+    playAgainElement.addEventListener('click', () => {
+        location.reload();
+    });
+}
