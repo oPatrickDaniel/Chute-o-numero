@@ -1,9 +1,9 @@
 // elementos html
 let inputNumber: HTMLInputElement | null = document.querySelector("#inputNum")
-let sendButton = document.querySelector("#sendButton")
+let sendButton: HTMLElement | null = document.querySelector("#sendButton")
 let trialElement: HTMLElement | null = document.querySelector("#attempt")
 let resultElement: HTMLElement | null = document.querySelector("#result")
-let playAgainElement = document.querySelector("#playAgain")
+let playAgainElement: HTMLElement | null = document.querySelector("#playAgain")
 
 // variáveis iniciais
 let randomNumber: number = Math.round(Math.random() * 10)
