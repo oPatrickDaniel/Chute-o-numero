@@ -1,16 +1,16 @@
 // elementos html
-let inputNumber: HTMLInputElement | null = document.querySelector("#inputNum")
-let sendButton: HTMLElement | null = document.querySelector("#sendButton")
-let trialElement: HTMLElement | null = document.querySelector("#attempt")
-let resultElement: HTMLElement | null = document.querySelector("#result")
-let playAgainElement: HTMLElement | null = document.querySelector("#playAgain")
+let inputNumber = document.querySelector("#inputNum") as HTMLInputElement
+let sendButton = document.querySelector("#sendButton") as HTMLElement
+let trialElement = document.querySelector("#attempt") as HTMLElement
+let resultElement = document.querySelector("#result") as HTMLElement
+let playAgainElement = document.querySelector("#playAgain") as HTMLElement
 
 // variáveis iniciais
 let randomNumber: number = Math.round(Math.random() * 10)
 let attemptNumber: number = 0;
 
-function numberPlayer() {
-    // verifica se o numero do usuário é valido e o  armazena;
+function numberPlayer(): number {
+    // verifica se o numero do usuário é valido e o  armazena
     if (!inputNumber) return 0
     let InputValue = parseFloat(inputNumber.value)
 
@@ -49,8 +49,7 @@ function printResultInHtml() {
     }
 }
 
-if (inputNumber && sendButton && playAgainElement) {
-
+document.addEventListener('DOMContentLoaded', () => {
     inputNumber.addEventListener('change', () => {
         attemptNumber++
         printResultInHtml()
@@ -64,4 +63,5 @@ if (inputNumber && sendButton && playAgainElement) {
     playAgainElement.addEventListener('click', () => {
         location.reload()
     })
-}
+})
+
